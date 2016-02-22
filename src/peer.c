@@ -50,10 +50,8 @@ static void *peer_chater(void *handle)
             if (!pcc->connected)
                 printf("(Peer) Fail to connect to server.\n");
         }
-        if (pcc->terminated) {
-            printf("(Peer) Terminated the chat.\n");
+        if (pcc->terminated)
             break;
-        }
 
         /* We escape the only one '\n' case. */
         if (msgLen > 1) {

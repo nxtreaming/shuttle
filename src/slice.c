@@ -66,9 +66,7 @@ int main (int argc, char *argv[])
                 event.peer->data = malloc(strlen(peer_info) + 1);
                 if (event.peer->data)
                     strcpy(event.peer->data, peer_info);
-                /* Notify other chaters. */
                 snprintf(msg_notify, sizeof(msg_notify), "%s has connected to server", peer_info);
-                /* enet_host_broadcast(server, 1, packet); */
                 for (i=0; i < server->peerCount; i++) {
                     ENetPeer *peer = server->peers + i;
 
