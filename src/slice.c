@@ -75,7 +75,7 @@ int main (int argc, char *argv[])
                     /* Notify other chaters. */
                     if (peer != event.peer) {
                         packet = enet_packet_create(msg_notify, strlen(msg_notify) + 1, ENET_PACKET_FLAG_RELIABLE);
-                        enet_peer_send(peer, 1, packet);
+                        enet_peer_send(peer, SHUTTLE_CHANNEL_NOTIFY, packet);
                         enet_host_flush(server);
                     }
                 }
@@ -89,7 +89,7 @@ int main (int argc, char *argv[])
                     /* Relay the message to other chaters. */
                     if (peer != event.peer) {
                         packet = enet_packet_create(message, strlen(message) + 1, ENET_PACKET_FLAG_RELIABLE);
-                        enet_peer_send(peer, 0, packet);
+                        enet_peer_send(peer, 1, packet);
                         enet_host_flush(server);
                     }
                 }

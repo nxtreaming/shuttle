@@ -60,7 +60,7 @@ static void *peer_chater(void *handle)
             /* We exclude the tail '\n'. */
             message[msgLen - 1] = '\0';
             packet = enet_packet_create(message, msgLen - 1, ENET_PACKET_FLAG_RELIABLE);
-            ret = enet_peer_send(pcc->peer, 0, packet);
+            ret = enet_peer_send(pcc->peer, 1, packet);
             if (ret < 0) {
                 printf("(Peer) Fail to send packet: %d.\n", ret);
                 enet_packet_destroy(packet);
@@ -171,7 +171,7 @@ int main (int argc, char *argv[])
                 printf("(Peer) Connected to server (%s:%d).\n", host_ip, event.peer->address.port);
                 break;
             case ENET_EVENT_TYPE_RECEIVE:
-                if (event.channelID == 1)
+                if (event.channelID == SHUTTLE_CHANNEL_NOTIFY)
                     printf("(Peer) Got a notification message : %s.\n", (char*)event.packet->data);
                 else
                     printf("(Peer) Got a chat message: %s.\n", (char*)event.packet->data);
