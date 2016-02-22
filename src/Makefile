@@ -10,8 +10,13 @@ CFLAGS      = -I/usr/local/include -Wall -g -O0
 LDFLAGS     = -L/usr/local/lib
 DEPLIBS     = -lenet -lpthread
 
-%.o:%.c
+DEPS = \
+       config.h
+
+
+%.o:%.c $(DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
+
 
 SLICE_OBJS = \
         slice.o
