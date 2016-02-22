@@ -13,7 +13,7 @@
 #define SHUTTLE_MAX_INCOMING_BANDWIDTH      0
 #define SHUTTLE_MAX_OUTGOING_BANDWIDTH      0
 
-/* MUST change to server host or "localhost" */
+/* MUST change to your server host or "localhost". */
 #define SHUTTLE_SERVER_HOST                 "shuttle.server.host"
 #define SHUTTLE_SERVER_PORT                 20123
 
